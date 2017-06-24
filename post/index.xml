@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Keep Calm and Solve Problems</title>
+    <link>https://nkapliev.org/blog/post/</link>
+    <description>Recent content in Posts on Keep Calm and Solve Problems</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Jun 2017 10:45:58 +0100</lastBuildDate>
+    
+	<atom:link href="https://nkapliev.org/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google foo.bar</title>
+      <link>https://nkapliev.org/blog/post/google-foo.bar/</link>
+      <pubDate>Sat, 24 Jun 2017 10:45:58 +0100</pubDate>
+      
+      <guid>https://nkapliev.org/blog/post/google-foo.bar/</guid>
+      <description>Once in the evening, I’ve been helped Google to save Bunny Planet.
+My friend from India told me that forest pythons are extremely dangerous.
+He said: Nick, you a good man, but your bear fighting skills that you developed during childhood in Russia will barely help you if you will meet such a big snake as a python in wood.
+So, I was looking for some docs about interaction with pythons: tips from masters, evidence of survivals.</description>
+    </item>
+    
+  </channel>
+</rss>
