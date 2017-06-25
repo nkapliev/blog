@@ -29,7 +29,7 @@ So, I was looking for some docs about interaction with pythons: tips from master
       <pubDate>Fri, 23 Jun 2017 21:46:25 +0100</pubDate>
       
       <guid>https://nkapliev.org/blog/about/</guid>
-      <description>Hello World!
+      <description> Hello World!
 My name is Nick Kapliev.
 I am a Software Engineer.
 I know how things work, how to fix them, and how to build better ones.
@@ -37,7 +37,8 @@ Contacts:
 nkapliev@gmail.com
 github.com/nkapliev
 twitter.com/nkapliev
-Or everywhere else by username nkapliev.</description>
+Or everywhere else by username nkapliev.
+ </description>
     </item>
     
   </channel>
