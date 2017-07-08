@@ -4,28 +4,34 @@
     <meta name="generator" content="Hugo 0.24" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts | Nick Kapliev</title>
-    <meta name="description" content="">
+    <title>Stop, Little Graphite | Nick Kapliev</title>
+    <meta name="description" content="Q: I have stopped reporting some counters to graphite and removed folders/counters related to them. Why graphite recreates deleted folders/counters?
+A: Most probably because some of your applications are still reporting removed counters. And graphite just doing what it suppose to do: storing them.
+So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.
+Go to instances/containers whith your application and check its source code.">
     <meta name="keywords" content="">
     
     
     
-    
-      <meta name="robots" content="noindex">
     
     
 
   <meta name="author" content="Nick Kapliev">
 
 
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://nkapliev.org/blog/post/" />
+    <meta property="og:title" content="Stop, Little Graphite" />
+<meta property="og:description" content="Q: I have stopped reporting some counters to graphite and removed folders/counters related to them. Why graphite recreates deleted folders/counters?
+A: Most probably because some of your applications are still reporting removed counters. And graphite just doing what it suppose to do: storing them.
+So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.
+Go to instances/containers whith your application and check its source code." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nkapliev.org/blog/post/stop-little-graphite/" />
 
 
 
-<meta property="og:updated_time" content="2017-07-08T16:54:48&#43;01:00"/>
+<meta property="article:published_time" content="2017-07-08T16:54:48&#43;01:00"/>
+<meta property="article:modified_time" content="2017-07-08T16:54:48&#43;01:00"/>
+
 
 
 
@@ -53,9 +59,7 @@ ga('send', 'pageview');
 <script async src='//www.google-analytics.com/analytics.js'></script>
 
     
-      <link href="https://nkapliev.org/blog/post/index.xml" rel="alternate" type="application/rss+xml" title="Nick Kapliev" />
-    
-    <link rel="canonical" href="https://nkapliev.org/blog/post/">
+    <link rel="canonical" href="https://nkapliev.org/blog/post/stop-little-graphite/">
     
     
     <link rel="icon" type="image/png" href="/blog/favicon-240x240.png" sizes="240x240">
@@ -143,7 +147,7 @@ article [itemprop="description"] {
     
       <a itemprop="url" class="" href="/blog/"><span itemprop="name">Blog</span></a>
     
-      <a itemprop="url" class="active" href="/blog/post/"><span itemprop="name">Posts</span></a>
+      <a itemprop="url" class="" href="/blog/post/"><span itemprop="name">Posts</span></a>
     
       <a itemprop="url" class="" href="/blog/about/"><span itemprop="name">About</span></a>
     
@@ -152,17 +156,26 @@ article [itemprop="description"] {
 
 </header>
     <main>
-  <header>
-    <h1>Posts</h1>
-  </header>
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/blog/post/stop-little-graphite/">Stop, Little Graphite</a>
-    </h2>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
     
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+<meta itemprop="name" content="Stop, Little Graphite">
+<meta itemprop="description" content="Q: I have stopped reporting some counters to graphite and removed folders/counters related to them. Why graphite recreates deleted folders/counters?
+A: Most probably because some of your applications are still reporting removed counters. And graphite just doing what it suppose to do: storing them.
+So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.
+Go to instances/containers whith your application and check its source code.">
+
+
+<meta itemprop="dateModified" content="2017-07-08T16:54:48&#43;01:00" />
+<meta itemprop="wordCount" content="291">
+
+
+
+<meta itemprop="keywords" content="" />
+
+    <header>
+      <h1 itemprop="headline">Stop, Little Graphite</h1>
+      <p class="muted">
+        <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
   <circle cx="16" cy="16" r="14" />
   <path d="M16 8 L16 16 20 20" />
 </svg>
@@ -173,73 +186,89 @@ article [itemprop="description"] {
 
   Published: <time datetime="2017-07-08T16:54:48&#43;01:00">8 Jul, 2017</time>
 
+
+      </p>
+    </header>
+    
+    
+
+    <div itemprop="articleBody">
+      <p><strong>Q</strong>: I have stopped reporting some counters to <code>graphite</code> and removed folders/counters related to them. Why <code>graphite</code> recreates deleted folders/counters?<br />
+<strong>A</strong>: Most probably because some of your applications are still reporting removed counters. And <code>graphite</code> just doing what it suppose to do: storing them.<br />
+So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.<br />
+Go to instances/containers whith your application and check its source code.</p>
+
+<p><strong>Q</strong>: Done! Changes deployed but <code>graphite</code> still recreates counters/folders. What should I do next?<br />
+<strong>A</strong>: Do you use <code>statsd</code>/<code>carbon-aggregator</code>/etc.? Probably you are. Restart them.<br />
+The problem could be related to empty counters that aggregators(e.g. <code>statsd</code>) trying to report to <code>graphite</code> again and again, even after nobody else asks them to do so.<br />
+You need to restart <code>statsd</code>. This way you will force it to release old counters, and it will stop reporting them.<br />
+Do not forget to restart <code>statsd</code> on the same instance with your <code>graphite</code> if you have it there.</p>
+
+<p>Also, there is an option in a <code>statsd</code> config that forces it to stop report empty counters: <code>deleteIdleStats</code>.<br />
+Please read <a href="https://grafana.com/blog/2016/03/03/25-graphite-grafana-and-statsd-gotchas/#nulls.deleteIdleStats">some</a> <a href="https://github.com/etsy/statsd/pull/348">docs</a> before changing it ;)</p>
+
+<p>Another way to check that <code>statsd</code> is a cause of your troubles is to connect to its admin interface and look what counters <code>statsd</code> are aggregating right now and going to report to <code>graphite</code>:</p>
+
+<pre><code>telnet 127.0.0.1 8126
+counters
+</code></pre>
+
+<p>Read more about <code>statsd</code> admin cli in <a href="https://github.com/etsy/statsd/blob/master/docs/admin_interface.md">docs</a>.</p>
+
+<p><strong>Q</strong>: Done, aggregators restarted. But <code>graphite</code> still recreates counters/folders.<br />
+<strong>A</strong>: Sometimes <code>statsd</code> need to be restarted several times. Have no idea why :(</p>
+
+<p>I hope you will solve the problem using this advice.<br />
+If you will not, please tell me what solution did you find for your case.</p>
+
+    </div>
+    
+      <article>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'nkapliev';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      </article>
+    
+    <footer>
+      <hr>
+      <p>
+  Published
+  
+    
+      by <span itemprop="author">Nick Kapliev</span>
+    
+  
+  <time datetime="2017-07-08T16:54:48&#43;01:00">
+    8 Jul, 2017
+  </time>
+  
+  
+  using <span itemprop="wordCount">291</span> words.
 </p>
-    
-  </header>
-  
-  <div itemprop="description">
-    Q: I have stopped reporting some counters to graphite and removed folders/counters related to them. Why graphite recreates deleted folders/counters?
-A: Most probably because some of your applications are still reporting removed counters. And graphite just doing what it suppose to do: storing them.
-So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.
-Go to instances/containers whith your application and check its source code.
-  </div>
-  
-    <p><a itemprop="url" href="/blog/post/stop-little-graphite/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="en-us">
-  <meta itemprop="datePublished" content="2017-07-08T16:54:48&#43;01:00">
-  <meta itemprop="dateModified" content="2017-07-08T16:54:48&#43;01:00">
-  
-</article>
 
-  
-    <article itemscope itemtype="http://schema.org/CreativeWork">
-  <header>
-    <h2 itemprop="name">
-      <a href="/blog/post/google-foo.bar/">Google foo.bar</a>
-    </h2>
-    
-      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <circle cx="16" cy="16" r="14" />
-  <path d="M16 8 L16 16 20 20" />
-</svg>
-<span>3 minute read</span>
-<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-</svg>
+      
 
-  Published: <time datetime="2017-06-24T10:45:58&#43;01:00">24 Jun, 2017</time>
 
-</p>
-    
-  </header>
-  
-  <div itemprop="description">
-    Once in the evening, I’ve been helping Google to save Bunny Planet.
-My friend from India told me that forest pythons are extremely dangerous.
-He said: Nick, you a good man, but your bear fighting skills that you developed during childhood in Russia will barely help you if you will meet such a big snake as a python in a forest.
-So, I was looking for some docs about interaction with pythons: tips from masters, evidence of survivals.
-  </div>
-  
-    <p><a itemprop="url" href="/blog/post/google-foo.bar/">Read More&nbsp;&raquo;</a></p>
-  
-  <meta itemprop="inLanguage" content="en-us">
-  <meta itemprop="datePublished" content="2017-06-24T10:45:58&#43;01:00">
-  <meta itemprop="dateModified" content="2017-06-24T10:45:58&#43;01:00">
-  
-</article>
 
-  
+    </footer>
+  </article>
 </main>
     <footer>
-  <nav>
-  <p>
-    
-    <span>Page 1 of 1</span>
-    
-  </p>
-</nav>
-
   
 
 </footer>

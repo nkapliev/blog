@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Nick Kapliev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Jun 2017 10:45:58 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jul 2017 16:54:48 +0100</lastBuildDate>
     
 	<atom:link href="https://nkapliev.org/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stop, Little Graphite</title>
+      <link>https://nkapliev.org/blog/post/stop-little-graphite/</link>
+      <pubDate>Sat, 08 Jul 2017 16:54:48 +0100</pubDate>
+      
+      <guid>https://nkapliev.org/blog/post/stop-little-graphite/</guid>
+      <description>Q: I have stopped reporting some counters to graphite and removed folders/counters related to them. Why graphite recreates deleted folders/counters?
+A: Most probably because some of your applications are still reporting removed counters. And graphite just doing what it suppose to do: storing them.
+So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.
+Go to instances/containers whith your application and check its source code.</description>
+    </item>
     
     <item>
       <title>Google foo.bar</title>

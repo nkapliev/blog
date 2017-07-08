@@ -23,7 +23,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-24T10:45:58&#43;01:00"/>
+<meta property="og:updated_time" content="2017-07-08T16:54:48&#43;01:00"/>
 
 
 
@@ -159,6 +159,43 @@ article [itemprop="description"] {
   <header>
     <h1>Nick Kapliev</h1>
   </header>
+  
+    <article itemscope itemtype="http://schema.org/CreativeWork">
+  <header>
+    <h2 itemprop="name">
+      <a href="/blog/post/stop-little-graphite/">Stop, Little Graphite</a>
+    </h2>
+    
+      <p class="muted"><svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <circle cx="16" cy="16" r="14" />
+  <path d="M16 8 L16 16 20 20" />
+</svg>
+<span>2 minute read</span>
+<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+</svg>
+
+  Published: <time datetime="2017-07-08T16:54:48&#43;01:00">8 Jul, 2017</time>
+
+</p>
+    
+  </header>
+  
+  <div itemprop="description">
+    Q: I have stopped reporting some counters to graphite and removed folders/counters related to them. Why graphite recreates deleted folders/counters?
+A: Most probably because some of your applications are still reporting removed counters. And graphite just doing what it suppose to do: storing them.
+So, the first thing to do you should check that changes in your applications that prevent old counters from reporting have been deployed for real.
+Go to instances/containers whith your application and check its source code.
+  </div>
+  
+    <p><a itemprop="url" href="/blog/post/stop-little-graphite/">Read More&nbsp;&raquo;</a></p>
+  
+  <meta itemprop="inLanguage" content="en-us">
+  <meta itemprop="datePublished" content="2017-07-08T16:54:48&#43;01:00">
+  <meta itemprop="dateModified" content="2017-07-08T16:54:48&#43;01:00">
+  
+</article>
+
   
     <article itemscope itemtype="http://schema.org/CreativeWork">
   <header>
